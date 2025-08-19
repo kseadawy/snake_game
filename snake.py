@@ -1,5 +1,4 @@
 from turtle import Turtle
-from turtledemo.penrose import start
 
 DISTANCE = 20
 INITIAL_LENGTH = 3
@@ -23,6 +22,7 @@ class Snake:
         seg.color("white")
         seg.penup()
         seg.speed(INITIAL_SPEED)
+        seg.speed(0)
         seg.setpos(position)
         self.segments.append(seg)
 
@@ -58,3 +58,9 @@ class Snake:
             new_speed = cur_speed+1
             segment.speed(new_speed)
         print(f"new speed is: {new_speed}")
+
+    def reset(self):
+        for seg in self.segments:
+            seg.speed(0)
+            seg.setpos(1000, 1000)
+        self.__init__()
